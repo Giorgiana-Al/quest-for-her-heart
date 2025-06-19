@@ -28,6 +28,7 @@
       text-decoration: none;
       font-size: 1.1em;
       display: inline-block;
+      cursor: pointer;
     }
     .box {
       background: rgba(255, 255, 255, 0.05);
@@ -36,6 +37,15 @@
       padding: 30px;
       margin: 40px auto;
       max-width: 600px;
+    }
+    #checkpoint1 {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    #checkpoint1.show {
+      display: block;
+      opacity: 1;
     }
     ul {
       list-style: none;
@@ -63,14 +73,23 @@
       <li>Final boss is waiting</li>
     </ul>
 
-    <!-- Butonul care face scroll -->
-    <a href="#checkpoint1" class="btn">▶ START QUEST</a>
+    <!-- Butonul care activează checkpoint-ul -->
+    <button class="btn" onclick="startQuest()">▶ START QUEST</button>
   </div>
 
-  <!-- Checkpoint #1 apare mai jos și e vizibil prin scroll -->
+  <!-- Checkpoint 1, ascuns inițial -->
   <div class="box" id="checkpoint1">
     <h2>🧭 CHECKPOINT #1</h2>
     <p>Go to your usual car spot.<br>Something’s waiting there for you.<br><br>💌 Look for a scroll with your first mission.</p>
   </div>
+
+  <!-- Scriptul care activează cutia -->
+  <script>
+    function startQuest() {
+      const checkpoint = document.getElementById('checkpoint1');
+      checkpoint.classList.add('show');
+      checkpoint.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
